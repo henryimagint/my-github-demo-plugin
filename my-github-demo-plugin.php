@@ -1,0 +1,33 @@
+<?php
+/*
+Plugin Name: My GitHub Demo Plugin
+Description: Demo plugin that updates from GitHub
+Version: 1.0.0
+Author: Henry Dev
+*/
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+// Example feature so we know plugin works
+add_action('admin_notices', function () {
+    echo '<div class="notice notice-success"><p>My GitHub Demo Plugin is active 🚀</p></div>';
+});
+
+
+// ✅ LOAD UPDATE CHECKER LIBRARY
+require __DIR__ . '/plugin-update-checker/plugin-update-checker.php';
+
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+// ✅ SETUP GITHUB UPDATES
+$updateChecker = PucFactory::buildUpdateChecker(
+    'https://github.com/YOUR_GITHUB_USERNAME/my-github-demo-plugin/', // repo URL
+    __FILE__,
+    'my-github-demo-plugin'
+);
+
+// Branch name
+$updateChecker->setBranch('main');
+
+// Optional: if repo is private
+// $updateChecker->setAuthentication('GITHUB_PERSONAL_ACCESS_TOKEN');
