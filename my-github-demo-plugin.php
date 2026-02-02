@@ -10,8 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 // Example feature so we know plugin works
 add_action('admin_notices', function () {
-    echo '<div class="notice notice-success"><p>My GitHub Demo Plugin is active 🚀</p></div>';
+    ?>
+    <div class="notice notice-success is-dismissible">
+        <p>My GitHub Demo Plugin is active 🚀</p>
+    </div>
+    <?php
 });
+
 
 
 // ✅ LOAD UPDATE CHECKER LIBRARY
@@ -33,5 +38,5 @@ $updateChecker->setBranch('main');
 // $updateChecker->setAuthentication('GITHUB_PERSONAL_ACCESS_TOKEN');
 
 add_action('admin_footer', function () {
-    echo '<p style="text-align:center;">Plugin version 1.1.0 loaded 🎯</p>';
+    echo '<p style="text-align:center;">Plugin version 1.2.0 loaded 🎯</p>';
 });
