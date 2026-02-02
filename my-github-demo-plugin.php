@@ -2,7 +2,7 @@
 /*
 Plugin Name: My GitHub Demo Plugin
 Description: Demo plugin that updates from GitHub
-Version: 1.1.0
+Version: 1.2.0
 Author: Henry Dev
 */
 
