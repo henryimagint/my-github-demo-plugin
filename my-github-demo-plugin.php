@@ -2,7 +2,7 @@
 /*
 Plugin Name: My GitHub Demo Plugin
 Description: Demo plugin that updates from GitHub
-Version: 1.0.0
+Version: 1.1.0
 Author: Henry Dev
 */
 
@@ -31,3 +31,7 @@ $updateChecker->setBranch('main');
 
 // Optional: if repo is private
 // $updateChecker->setAuthentication('GITHUB_PERSONAL_ACCESS_TOKEN');
+
+add_action('admin_footer', function () {
+    echo '<p style="text-align:center;">Plugin version 1.1.0 loaded 🎯</p>';
+});
