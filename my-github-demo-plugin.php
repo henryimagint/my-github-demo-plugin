@@ -2,39 +2,42 @@
 /*
 Plugin Name: My GitHub Demo Plugin
 Description: Demo plugin that updates from GitHub
-Version: 1.3.0
+Version: 1.4.0
 Author: Henry Dev
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-// Example feature so we know plugin works
+// ===============================
+// ✅ DYNAMIC CLOSEABLE ADMIN NOTICE
+// ===============================
 add_action('admin_notices', function () {
+    // Get current plugin version from plugin header
+    $plugin_data = get_file_data( __FILE__, array('Version' => 'Version') );
+    $version = $plugin_data['Version'];
+
     ?>
     <div class="notice notice-success is-dismissible">
-        <p>My GitHub Demo Plugin is active 🚀</p>
+        <p>The new version <?php echo esc_html($version); ?> is updated successfully 🚀</p>
     </div>
     <?php
 });
 
-// ✅ LOAD UPDATE CHECKER LIBRARY
+// ===============================
+// ✅ LOAD PLUGIN UPDATE CHECKER
+// ===============================
 require __DIR__ . '/plugin-update-checker/plugin-update-checker.php';
-
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
-// ✅ SETUP GITHUB UPDATES
+// Your GitHub repo URL
 $updateChecker = PucFactory::buildUpdateChecker(
-    'https://github.com/henryimagint/my-github-demo-plugin/', // repo URL
+    'https://github.com/henryimagint/my-github-demo-plugin/',
     __FILE__,
     'my-github-demo-plugin'
 );
 
-// Branch name
+// Branch to track
 $updateChecker->setBranch('main');
 
-// Optional: if repo is private
-// $updateChecker->setAuthentication('GITHUB_PERSONAL_ACCESS_TOKEN');
-
-add_action('admin_footer', function () {
-    echo '<p style="text-align:center;">Plugin version 1.3.0 loaded 🎯</p>';
-});
+// Optional: If repo is private, add GitHub personal access token
+// $updateChecker->setAuthentication('ghp_XXXXXXXXXXXXXXXXXXXX');
