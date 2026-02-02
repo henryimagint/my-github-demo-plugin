@@ -21,7 +21,7 @@ use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 // ✅ SETUP GITHUB UPDATES
 $updateChecker = PucFactory::buildUpdateChecker(
-    'https://github.com/YOUR_GITHUB_USERNAME/my-github-demo-plugin/', // repo URL
+    'https://github.com/henryimagint/my-github-demo-plugin/', // repo URL
     __FILE__,
     'my-github-demo-plugin'
 );
